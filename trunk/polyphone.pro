@@ -21,8 +21,7 @@ TRANSLATIONS = polyphone_en.ts \
     polyphone_es.ts \
     polyphone_it.ts \
     polyphone_sr.ts \
-    polyphone_de.ts \
-    polyphone_cs.ts
+    polyphone_de.ts
 
 
 QT       += core gui printsupport svg
@@ -74,8 +73,8 @@ unix:!macx {
     INCLUDEPATH += /usr/include/jack
 }
 macx {
-    QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.6
-    QMAKE_MAC_SDK = macosx10.9
+    QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.11
+    QMAKE_MAC_SDK = macosx10.11
     DEFINES += __MACOSX_CORE__ USE_LOCAL_RTMIDI USE_LOCAL_STK USE_LOCAL_QCUSTOMPLOT
     INCLUDEPATH += lib/mac/Jackmp.framework/Headers \
         lib \
@@ -91,6 +90,7 @@ macx {
         -framework AudioUnit -framework AudioToolbox -framework Cocoa -lz
     ICON = polyphone.icns
     QMAKE_INFO_PLIST = polyphone.plist
+    QMAKE_POST_LINK = $$PWD/support/mac/macx_post.sh $$DESTDIR
 }
 
 # Location of RtMidi
